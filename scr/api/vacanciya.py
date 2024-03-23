@@ -4,6 +4,25 @@ class base (ABC):
     def __str__(self):
         pass
 
+    def get_name(self):
+        pass
+
+    def get_salary(self):
+        pass
+
+    def get_adress(self):
+        pass
+
+    def get_url(self):
+        pass
+
+    def snippet(self):
+        pass
+
+    def get_professional_roles(self):
+        pass
+
+
 class vacanciya(base):
     def __init__(self, vacanc_dict: dict):
         self.name = vacanc_dict.get('name')
@@ -34,3 +53,14 @@ class vacanciya(base):
     def get_salary(self):
         return self.salary_up
 
+    def get_adress(self):
+        return self.adress
+
+    def get_url(self):
+        return self.alternate_url
+
+    def snippet(self):
+        return self.snippet
+
+    def get_professional_roles(self):
+        return self.professional_roles

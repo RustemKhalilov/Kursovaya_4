@@ -7,11 +7,16 @@ class base_filter(ABC):
     def __str__(self):
         pass
 
+    def __len__(self):
+        pass
+
     def filter_vacanciya_top_salary(self):
         pass
 
     def safe_json_file(self):
         pass
+
+
 
 
 class FilterVacanciya(base_filter):
@@ -66,3 +71,6 @@ class FilterVacanciya(base_filter):
                     }
                 )
             json.dump(my_json, write_file)
+
+    def __len__(self):
+        return len(self.data_vacanciya)
