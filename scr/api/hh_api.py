@@ -1,7 +1,15 @@
 import requests
+from abc import ABC, abstractmethod
 
 
-class hhunter_api:
+class Apihh(ABC):
+
+    @abstractmethod
+    def get_vacancies(self):
+        pass
+
+
+class HhunterApi(Apihh):
     def __init__(self):
         self.base_url = "https://api.hh.ru/vacancies"
 

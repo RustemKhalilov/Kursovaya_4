@@ -1,29 +1,38 @@
 from abc import ABC, abstractmethod
 
-class base (ABC):
+
+class Base(ABC):
+
+    @abstractmethod
     def __str__(self):
         pass
 
+    @abstractmethod
     def get_name(self):
         pass
 
+    @abstractmethod
     def get_salary(self):
         pass
 
+    @abstractmethod
     def get_adress(self):
         pass
 
+    @abstractmethod
     def get_url(self):
         pass
 
+    @abstractmethod
     def snippet(self):
         pass
 
+    @abstractmethod
     def get_professional_roles(self):
         pass
 
 
-class vacanciya(base):
+class Vacanciya(Base):
     def __init__(self, vacanc_dict: dict):
         self.name = vacanc_dict.get('name')
         temp_dict = vacanc_dict.get('salary')

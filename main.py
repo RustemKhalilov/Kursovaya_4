@@ -1,5 +1,5 @@
-from scr.api.hh_api import hhunter_api
-from scr.api.vacanciya import vacanciya
+from scr.api.hh_api import HhunterApi
+from scr.api.vacanciya import Vacanciya
 from scr.my_func.func import FilterVacanciya
 
 
@@ -21,13 +21,13 @@ def user_input_data():
 
 if __name__ == "__main__":
     user_dict = user_input_data()
-    hh_obj = hhunter_api()  # Создали объект для запроса
+    hh_obj = HhunterApi()  # Создали объект для запроса
     # region_number = hh_obj.get_region()
     hh_obj_dict = hh_obj.get_vacancies(user_dict['название работы'], user_dict[
         'количество запрашиваемых вакансий'])  # получили ответ от hh.ru в виде json
     data_list = []
     for item in hh_obj_dict['items']:
-        my_vacansiya = vacanciya(item)
+        my_vacansiya = Vacanciya(item)
         data_list.append(my_vacansiya)
     # создаем класс для фильтра вакансий
     my_filter = FilterVacanciya(user_dict['минимальная зарплата'], user_dict['максимальная зарплата'],

@@ -1,8 +1,8 @@
 import pytest
-from scr.api.hh_api import hhunter_api
-from scr.api.vacanciya import vacanciya
+from scr.api.hh_api import HhunterApi
+from scr.api.vacanciya import Vacanciya
 from scr.my_func.func import FilterVacanciya
-from main import user_input_data
+
 
 def test_vacanciya():
     job_name = "Проектировщик"
@@ -18,12 +18,12 @@ def test_vacanciya():
             'минимальная зарплата': salary_limit_down,
             'максимальная зарплата': salary_limit_up,
             }
-    hh_obj = hhunter_api()  # Создали объект для запроса
+    hh_obj = HhunterApi()  # Создали объект для запроса
     hh_obj_dict = hh_obj.get_vacancies(user_dict['название работы'], user_dict[
         'количество запрашиваемых вакансий'])  # получили ответ от hh.ru в виде json
     data_list = []
     for item in hh_obj_dict['items']:
-        my_vacansiya = vacanciya(item)
+        my_vacansiya = Vacanciya(item)
         data_list.append(my_vacansiya)
     # создаем класс для фильтра вакансий
     assert len(data_list) == 100

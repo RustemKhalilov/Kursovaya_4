@@ -1,25 +1,26 @@
 import json
-from scr.api.vacanciya import vacanciya
 from abc import ABC, abstractmethod
 
 
-class base_filter(ABC):
+class BaseFilter(ABC):
+    @abstractmethod
     def __str__(self):
         pass
 
+    @abstractmethod
     def __len__(self):
         pass
 
+    @abstractmethod
     def filter_vacanciya_top_salary(self):
         pass
 
+    @abstractmethod
     def safe_json_file(self):
         pass
 
 
-
-
-class FilterVacanciya(base_filter):
+class FilterVacanciya(BaseFilter):
 
     def __init__(self, salary_down, salary_up, vacanciya_display, work_word, data_vacanciya: list):
         self.data_vacanciya = data_vacanciya
@@ -71,6 +72,9 @@ class FilterVacanciya(base_filter):
                     }
                 )
             json.dump(my_json, write_file)
+
+    def __str__(self):
+        print('Фильтр вакансий')
 
     def __len__(self):
         return len(self.data_vacanciya)
